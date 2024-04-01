@@ -55,7 +55,6 @@ switch (mode) {
     document.getElementById('local').checked = true;
     document.getElementById('localfile').style.display = 'block';
     document.getElementById('filename').innerText = store.get('dataPath') || 'No file selected';
-
 }
 
 document.getElementById('enable').checked = store.get('enabled');

@@ -1,5 +1,7 @@
 const { ipcRenderer } = require('electron');
-const keys = require('../../modules/keys');
+const fs = require('fs');
+
+const keys = require('../../modules/keys.js');
 const Store = require('electron-store');
 const store = new Store({
   name: 'bardagi-config',
@@ -7,10 +9,8 @@ const store = new Store({
   encryptionKey: keys.store,
   clearInvalidConfig: true,
 });
-const fs = require('fs');
-const Danmaku = require('danmaku');
-const styling = require('../../modules/styling');
 
+const Danmaku = require('danmaku');
 const danmaku = new Danmaku({
   container: document.getElementById('comments'),
   comments: [],
@@ -18,50 +18,13 @@ const danmaku = new Danmaku({
   speed: store.get('speed') || 144,
 });
 
-const getStyling = () => {
-  let text, outline;
-  const coloursMode = store.get('colours');
-
-  const colours = styling.colours[coloursMode] || styling.colours[1];
-  const styledata = colours[Math.floor(Math.random() * colours.length)];
-
-  const fontSizeSetting = `[${store.get('fontSize')}]` || styling.sizes;
-  const fontSize = JSON.parse(fontSizeSetting);
-
-  switch (coloursMode) {
-    case '1':
-      text = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
-        Math.random() * 255,
-      )}, ${Math.floor(Math.random() * 255)})`;
-      outline = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
-        Math.random() * 255,
-      )}, ${Math.floor(Math.random() * 255)})`;
-      break;
-    default:
-      text = styledata.text;
-      outline = styledata.outline;
-  }
-
-  const style = {
-    font:
-      fontSize[Math.floor(Math.random() * fontSize.length)] + 'px ' + store.get('font') ||
-      'sans-serif',
-    fillStyle: text,
-  };
-
-  const outlineSize = store.get('outlineSize') || 5;
-  if (outlineSize !== 0) {
-    style.strokeStyle = outline;
-    style.lineWidth = outlineSize;
-  }
-  return style;
-};
+const getStyling = require('./assets/getStyling.js');
 
 /* SAMPLE (LOCAL) */
 ipcRenderer.on('sampleWindow', (_event, data) => {
   danmaku.emit({
     text: data,
-    style: getStyling(),
+    style: getStyling(store),
   });
 });
 
@@ -78,7 +41,7 @@ const init = () => {
     if (dataPath) {
       const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
       data.forEach((comment) => {
-        const styleData = getStyling();
+        const styleData = getStyling(store);
         const toEmit = {
           text: comment.msg,
           style: comment.colour
@@ -109,7 +72,7 @@ const init = () => {
     socket.on('message', (message) => {
       danmaku.emit({
         text: message,
-        style: getStyling(),
+        style: getStyling(store),
       });
     });
 
@@ -127,7 +90,7 @@ const init = () => {
 
       danmaku.emit({
         text: chatItem.message[0].text,
-        style: getStyling(),
+        style: getStyling(store),
       });
     });
     /* TWITCH */
@@ -151,7 +114,7 @@ const init = () => {
 
       danmaku.emit({
         text: message,
-        style: getStyling(),
+        style: getStyling(store),
       });
     });
     /* TIKTOK */
@@ -164,7 +127,7 @@ const init = () => {
     tiktokLive.on('chat', (chatItem) => {
       danmaku.emit({
         text: chatItem.comment,
-        style: getStyling(),
+        style: getStyling(store),
       });
     });
     /* BILIBILI */
@@ -177,14 +140,14 @@ const init = () => {
       live.on('msg', (msg) => {
         danmaku.emit({
           text: msg.data.msg,
-          style: getStyling(),
+          style: getStyling(store),
         });
       });
 
       live.on('DANMU_MSG', (msg) => {
         danmaku.emit({
           text: msg.info[1],
-          style: getStyling(),
+          style: getStyling(store),
         });
       });
     });

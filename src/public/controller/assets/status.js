@@ -1,4 +1,3 @@
 document.getElementById('sample-message').addEventListener('click', () => {
-    styling.sample(document.getElementById('sample').value);
+  styling.sample(document.getElementById('sample').value);
 });
-

@@ -4,6 +4,7 @@ const debug = false;
 
 const electron = require('electron');
 const { app, BrowserWindow, screen, ipcMain, Tray, Menu, dialog, shell } = electron;
+
 const keys = require('./modules/keys');
 const Store = require('electron-store');
 const store = new Store({
@@ -72,7 +73,7 @@ const createWindow = () => {
   if (debug) {
     window.webContents.openDevTools();
   } else {
-    window.setAlwaysOnTop(true, "level");
+    window.setAlwaysOnTop(true, 'level');
   }
 
   window.loadURL(`file://${__dirname}/public/window/index.html`);
@@ -153,9 +154,8 @@ app.on('ready', () => {
   /* TRAY */
   const tray = new Tray(`${__dirname}/public/assets/icon.png`);
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'Bardagi', enabled: false },
+    { label: 'Show Controller', click: () => createController() },
     { type: 'separator' },
-    { label: 'Controller', click: () => createController() },
     { label: 'Exit', click: () => app.quit() },
   ]);
   tray.setToolTip('Bardagi');

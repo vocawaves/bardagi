@@ -5,4 +5,3 @@ document.getElementById('github').addEventListener('click', () => {
 document.getElementById('donate').addEventListener('click', () => {
   about.openURL('https://liberapay.com/vocawaves/donate');
 });
-

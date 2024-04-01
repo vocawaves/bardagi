@@ -1,3 +1,3 @@
-module.exports = { 
-    store: 'aaaaaa'
-}
+module.exports = {
+  store: 'aaaaaa',
+};

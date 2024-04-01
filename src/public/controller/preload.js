@@ -24,7 +24,7 @@ contextBridge.exposeInMainWorld('main', {
   },
   getFile: () => {
     return ipcRenderer.sendSync('openFile');
-  }
+  },
 });
 
 contextBridge.exposeInMainWorld('styling', {
@@ -39,5 +39,5 @@ contextBridge.exposeInMainWorld('styling', {
 contextBridge.exposeInMainWorld('about', {
   openURL: (url) => {
     ipcRenderer.send('openURL', url);
-  }
+  },
 });
