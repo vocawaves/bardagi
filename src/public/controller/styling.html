@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <title>Bardagi Controller</title>
+    <link rel="stylesheet" href="assets/index.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="status.html">Status</a>
+      <hr/>
+      <a href="config.html">Config</a>
+      <a class="active" href="#">Styling</a>
+      <hr/>
+      <a href="about.html">About</a>
+    </div>
+    <div class="content">
+      <h1>Styling</h1>
+      <h3>Opacity</h3>
+      <span>Current Value: <span id="opacityValue"></span>%</span>
+      <div class="slidecontainer">
+        <input type="range" min="0" max="100" class="slider" id="opacity">
+      </div>
+      <h3>Font Sizes</h3>
+      <input type="text" placeholder="e.g 32, 60, 40" id="font-size" />
+      <h3>Colours</h3>
+      <label class="radio">RGB
+        <input type="radio" name="colours" value="1" id="rgb">
+        <span class="radio-inner"></span>
+      </label>
+      <label class="radio">niconico
+        <input type="radio" name="colours" value="2" id="niconico" >
+        <span class="radio-inner"></span>
+      </label>
+      <label class="radio">bilibili
+        <input type="radio" name="colours" value="3" id="blibili" >
+        <span class="radio-inner"></span>
+      </label>
+      <h3>Outline Size</h3>
+      <input type="text" id="outline-size" />
+      <h3>Speed</h3>
+      <input type="text" id="speed" />
+      <h3>Font</h3>
+      <input type="text" id="font" />
+      <br /><br />
+      <button id="save">Save</button>
+      <button id="reset">Reset</button>
+    </div>
+    <script src="assets/styling.js"></script>
+  </body>
+</html>

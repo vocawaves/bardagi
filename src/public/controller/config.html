@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'" />
+    <title>Bardagi Controller</title>
+    <link rel="stylesheet" href="assets/index.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="status.html">Status</a>
+      <hr />
+      <a class="active" href="#">Config</a>
+      <a href="styling.html">Styling</a>
+      <hr />
+      <a href="about.html">About</a>
+    </div>
+    <div class="content">
+      <h1>Options</h1>
+      <h3>Display</h3>
+      <button id="togglemovement">Toggle Movement</button>
+      <button id="clearcomments">Clear Comments</button>
+      <h3>Mode</h3>
+      <label class="radio"
+        >Local
+        <input type="radio" name="mode" value="1" id="local" />
+        <span class="radio-inner"></span>
+      </label>
+      <label class="radio"
+        >Socket
+        <input type="radio" name="mode" value="2" id="socket" />
+        <span class="radio-inner"></span>
+      </label>
+      <label class="radio"
+        >YouTube
+        <input type="radio" name="mode" value="3" id="youtube" />
+        <span class="radio-inner"></span>
+      </label>
+      <label class="radio"
+        >Twitch
+        <input type="radio" name="mode" value="4" id="twitch" />
+        <span class="radio-inner"></span>
+      </label>
+      <label class="radio"
+        >TikTok
+        <input type="radio" name="mode" value="5" id="tiktok" />
+        <span class="radio-inner"></span>
+      </label>
+      <label class="radio"
+        >bilibili
+        <input type="radio" name="mode" value="6" id="bilibili" />
+        <span class="radio-inner"></span>
+      </label>
+      <div id="localfile">
+        <h4>Local File</h4>
+        <button id="openfile">Open</button>
+        <button id="clearfile">Clear</button>
+        <br/>
+        <span>Current File: </span><span id="filename"></span>
+      </div>
+      <h3>Enable</h3>
+      <label class="checkbox">
+        <input type="checkbox" id="enable" name="enable" />
+        <span class="checkbox-inner"></span>
+      </label>
+      <h3>Identification</h3>
+      <input type="text" id="identification" placeholder="e.g channel id, server url" />
+      <br /><br />
+      <button id="save">Save</button>
+      <button id="kill">Kill</button>
+    </div>
+    <script src="assets/config.js"></script>
+  </body>
+</html>

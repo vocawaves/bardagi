@@ -1,0 +1,5 @@
+# Directories
+dist/
+.vscode/
+.history/
+node_modules/
