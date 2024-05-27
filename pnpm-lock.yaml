@@ -21,8 +21,8 @@ dependencies:
     specifier: 4.7.5
     version: 4.7.5
   tiktok-live-connector:
-    specifier: 1.1.5
-    version: 1.1.5
+    specifier: 1.1.7
+    version: 1.1.7
   tmi.js:
     specifier: 1.8.5
     version: 1.8.5
@@ -2467,8 +2467,8 @@ packages:
   /text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
 
-  /tiktok-live-connector@1.1.5:
-    resolution: {integrity: sha512-st+jRhXfw2RyWTAQdqttj6F4FBUEc0lPBEb3iE79xAi30neOA7Eqy+xEC2Z2+T58Q3uPhbOxy4nQqwCO5W/F/A==}
+  /tiktok-live-connector@1.1.7:
+    resolution: {integrity: sha512-OW3BLRtNDoCATT1f3qwVcs5kJzOiNaS+sNWchU9fwSHAAbK294KMoCTsQ/PmvtwABEz744b9pm/JLZbS8B9vvA==}
     engines: {node: '>=10.0.0'}
     dependencies:
       axios: 0.25.0
